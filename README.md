@@ -15,7 +15,7 @@ The tested environment is Anaconda stytr2, Python 3.11, PyTorch 2.11.0+cu128,
 torchvision 0.26.0+cu128 on an NVIDIA GPU. Install a CUDA-compatible PyTorch build.
 Other imports include Pillow, NumPy, SciPy, timm and requests.
 
-Place the dataset under datasets/checkpoint1 with content and style folders,
+Place the dataset under datasets/baseline with content and style folders,
 each containing train, val and test. Training uses 256 content and 96 style images.
 Validation and test each use 32 content images and 12 style images.
 The current data manifests and setup script should be reviewed before recreating
@@ -53,9 +53,9 @@ Record the dataset split, parameters and results with each experiment.
 
 ## Dataset manifests
 
-The committed datasets/checkpoint1/content.csv and style.csv record the exact
+The committed datasets/baseline/content.csv and style.csv record the exact
 source rows and split assignments used in the existing experiments. Use these
-assignments when preparing images. The earlier prepare_checkpoint1.py downloader
+assignments when preparing images. The earlier prepare_baseline.py downloader
 is experimental and is not included in this baseline commit.
 
 ## Scope of this baseline commit

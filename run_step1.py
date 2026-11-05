@@ -30,7 +30,7 @@ args.output.mkdir(exist_ok=True, parents=True)
 torch.manual_seed(9444)
 rng = random.Random(9444)
 torch.set_float32_matmul_precision("high")
-data = root / "datasets/checkpoint1"
+data = root / "datasets/baseline"
 
 
 def files(kind, split):
