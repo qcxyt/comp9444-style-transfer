@@ -29,7 +29,7 @@ StyTR-2-main/readme.md and place it in StyTR-2-main/experiments/.
 Run from the repository root:
 
     conda activate stytr2
-    python run_step1.py --crop256 --steps 5000 --content-weight 7 --output baseline_run
+    python train_baseline.py --crop256 --steps 5000 --content-weight 7 --output baseline_run
 
 This trains from random generator weights, with a frozen pretrained VGG.
 Expected time on our RTX 5060 Laptop GPU is approximately 24 minutes.
@@ -60,6 +60,6 @@ is experimental and is not included in this baseline commit.
 
 ## Scope of this baseline commit
 
-run_step1.py defaults to the standard objective with local-style-weight 0.
+train_baseline.py defaults to the standard objective with local-style-weight 0.
 The code also contains optional content-weight and local-loss switches from
 subsequent experiments. They are inactive in the baseline command above.
