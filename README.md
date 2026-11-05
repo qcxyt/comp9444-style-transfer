@@ -15,11 +15,13 @@ The tested environment is Anaconda stytr2, Python 3.11, PyTorch 2.11.0+cu128,
 torchvision 0.26.0+cu128 on an NVIDIA GPU. Install a CUDA-compatible PyTorch build.
 Other imports include Pillow, NumPy, SciPy, timm and requests.
 
-Place the dataset under datasets/baseline with content and style folders,
-each containing train, val and test. Training uses 256 content and 96 style images.
-Validation and test each use 32 content images and 12 style images.
-The current data manifests and setup script should be reviewed before recreating
-the subset. Share the existing split manifests with teammates for identical splits.
+Download [baseline_dataset.zip](https://github.com/qcxyt/comp9444-style-transfer/releases/download/trained-models-v1/baseline_dataset.zip) from the release.
+Extract it from the repository root:
+
+    Expand-Archive -LiteralPath .\baseline_dataset.zip -DestinationPath .
+
+The archive contains datasets/baseline/, including 440 images and two split manifests.
+Content train/val/test counts are 256/32/32; style counts are 96/12/12.
 
 Download the authors' vgg_normalised.pth using the link in
 StyTR-2-main/readme.md and place it in StyTR-2-main/experiments/.
@@ -41,10 +43,20 @@ For experiments requiring identical starting weights, give both runs the same
 
 ## Evaluation scope
 
-The training script evaluates 32 fixed pairs per split. evaluate_full_grid.py
-evaluates all 32 × 12 = 384 combinations per split, but currently expects all
-A/B/control/C weight folders to exist locally. It is an experiment comparison
-script, not a prerequisite for training the baseline.
+The training script evaluates 32 fixed pairs per split. Full-grid evaluation
+uses every combination of 32 photos and 12 paintings = 384 pairs per split.
+It loads trained models and computes metrics without updating weights.
+
+After placing the downloaded model weights as described below, run:
+
+    python evaluate_full_grid.py --models A B --output evaluation_ab
+
+A refers to the baseline and B to improvement1. This command evaluates only A and B.
+Use --models A to evaluate the baseline alone.
+Results are summary.json (means), pairs.csv (every combination), and
+by_style.csv (means for each reference artwork).
+The default without --models includes control and C, which require additional local weights.
+The environment, frozen VGG and dataset are also required.
 
 ## Collaboration
 
