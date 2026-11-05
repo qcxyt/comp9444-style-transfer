@@ -64,9 +64,9 @@ train_baseline.py defaults to the standard objective with local-style-weight 0.
 The code also contains optional content-weight and local-loss switches from
 subsequent experiments. They are inactive in the baseline command above.
 
-## 改进1
+## improvement1
 
-See [改进1](experiments/改进1/README.md) for reproduction
+See [improvement1](experiments/improvement1/README.md) for reproduction
 commands, full-grid results and visual comparisons.
 
 ## Trained weights

@@ -1,4 +1,4 @@
-# 改进1 — Content weight 10
+# improvement1 — Content weight 10
 
 This experiment increases the content loss coefficient from 7 to 10.
 The style and identity coefficients remain 10, 70 and 1. Both runs use
