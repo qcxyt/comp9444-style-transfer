@@ -63,3 +63,8 @@ is experimental and is not included in this baseline commit.
 train_baseline.py defaults to the standard objective with local-style-weight 0.
 The code also contains optional content-weight and local-loss switches from
 subsequent experiments. They are inactive in the baseline command above.
+
+## Experiment B
+
+See [content weight 10](experiments/content_weight_10/README.md) for reproduction
+commands, full-grid results and visual comparisons.
