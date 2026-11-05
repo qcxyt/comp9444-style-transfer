@@ -4,6 +4,7 @@ import csv
 import json
 from functools import partial
 from pathlib import Path
+from model_assets import ensure_asset
 import sys
 
 import torch
@@ -16,13 +17,17 @@ sys.path.insert(0, str(repo))
 from models import StyTR, transformer
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--models", nargs="+", choices=("A","B","control","C"), default=["A","B","control","C"])
+parser.add_argument("--models", nargs="+", choices=("A","B","control","C"), default=["A","B"])
 parser.add_argument("--output", type=Path, default=root / "evaluation_full_grid")
 args = parser.parse_args()
 out = args.output
 out.mkdir(exist_ok=True)
 models = {"A":"step1_256_5000","B":"step2_content10","control":"step2_local/control","C":"step2_local/experiment_c"}
 models = {name: models[name] for name in args.models}
+for name in models:
+    if name in ("A","B"):
+        ensure_asset(name)
+ensure_asset('vgg')
 StyTR.vgg.load_state_dict(torch.load(repo/"experiments/vgg_normalised.pth",weights_only=True))
 net = StyTR.StyTrans(StyTR.vgg,StyTR.decoder,StyTR.PatchEmbed(),transformer.Transformer(),None).cuda().eval()
 for module in net.modules():

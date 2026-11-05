@@ -1,5 +1,6 @@
 """Step 1 single-GPU baseline using the downloaded StyTr2 authors' model."""
 from pathlib import Path
+from model_assets import ensure_asset
 from functools import partial
 import argparse
 import csv
@@ -58,6 +59,7 @@ def shuffled_images(kind):
             yield read(path, training=True)
 
 
+ensure_asset('vgg')
 StyTR.vgg.load_state_dict(torch.load(repo / "experiments/vgg_normalised.pth", map_location="cpu", weights_only=True))
 net = StyTR.StyTrans(StyTR.vgg, StyTR.decoder, StyTR.PatchEmbed(), transformer.Transformer(), None).cuda()
 if args.initial_state:

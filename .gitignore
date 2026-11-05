@@ -19,6 +19,9 @@ evaluation_full_grid/
 !datasets/
 datasets/*
 !datasets/baseline/
-datasets/baseline/*
+
 !datasets/baseline/content.csv
 !datasets/baseline/style.csv
+
+!datasets/baseline/content/
+!datasets/baseline/style/
