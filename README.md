@@ -64,7 +64,13 @@ train_baseline.py defaults to the standard objective with local-style-weight 0.
 The code also contains optional content-weight and local-loss switches from
 subsequent experiments. They are inactive in the baseline command above.
 
-## Experiment B
+## 改进1
 
-See [content weight 10](experiments/content_weight_10/README.md) for reproduction
+See [改进1](experiments/改进1/README.md) for reproduction
 commands, full-grid results and visual comparisons.
+
+## Trained weights
+
+Download baseline.pth and improvement1.pth from [trained models](https://github.com/qcxyt/comp9444-style-transfer/releases/tag/trained-models-v1).
+Place baseline.pth as step1_256_5000/stytr2.pth and improvement1.pth as step2_content10/stytr2.pth for the existing evaluation script.
+These weights contain the trained generator. The frozen VGG weights are also required for evaluation.
